@@ -1,4 +1,17 @@
-export default class Game_Object {
+export class Game_Object_Image {
+    /**
+     * @param {!number} width
+     * @param {!number} height
+     * @param {!string} image
+     */
+    constructor(width, height, image) {
+        this.width = width
+        this.height = height
+        this.image = new Image();
+        this.image.src = image;
+    }
+}
+export class Game_Object {
     /**
      * 
      * @param {?CanvasRenderingContext2D} ctx
@@ -6,15 +19,13 @@ export default class Game_Object {
      * @param {!number} pos_y 
      * @param {!number} width
      * @param {!number} height
-     * @param {?HTMLImageElement} image
+     * @param {string} image
      */
-    constructor(ctx, pos_x, pos_y, width, height, image = null) {
+    constructor(ctx, pos_x, pos_y, width, height, image = "") {
         this.ctx = ctx;
         this.pos_x = pos_x;
         this.pos_y = pos_y;
-        this.width = width;
-        this.height = height;
-        this.image = image;
+        this.object_image = new Game_Object_Image(width, height, image)
     }
     // /**
     //  *
@@ -25,18 +36,15 @@ export default class Game_Object {
     // }
 
     /**
-     * @param {HTMLImageElement} img
-     * @param {number} sX
-     * @param {number} sY
-     * @param {number} sW
-     * @param {number} sH
-     * @param {number} dX
-     * @param {number} dY
-     * @param {number} dW
-     * @param {number} dH
+     * @param {!number} sX
+     * @param {!number} sY
+     * @param {!number} sW
+     * @param {!number} sH
+     * @param {!number} dW
+     * @param {!number} dH
      */
-    drawDisc(img, sX, sY, sW, sH, dX, dY, dW, dH) {
+    drawObject(sX, sY, sW, sH, dW, dH) {
         // @ts-ignore
-        this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
+        this.ctx.drawImage(this.object_image.image, sX, sY, sW, sH, this.pos_x, this.pos_y, dW, dH);
     };
 }
