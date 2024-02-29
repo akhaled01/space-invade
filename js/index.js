@@ -5,6 +5,8 @@ let isMovingLeft = false;
 let isMovingRight = false;
 let startTime = Date.now();
 let score = 0;
+let counter = 0;
+var numEnemies = 15;
 let isPaused = false;
 let lives = 2;
 let bullets = [];
@@ -201,16 +203,21 @@ function handleCollisions() {
     )
   ) {
     // All enemies are killed off, so rerender them
+    counter++;
     renderEnemies();
   }
 }
+
+
 
 function renderEnemies() {
   const enemyField = document.getElementById("enemyField");
   enemyField.innerHTML = ""; // Clear existing enemies
 
   // Number of enemies to generate
-  const numEnemies = 30; // Adjust as needed
+  if (counter > 0) {
+    numEnemies = numEnemies+5; // Adjust as needed
+  }
 
   // Generate enemies
   for (let i = 0; i < numEnemies; i++) {
