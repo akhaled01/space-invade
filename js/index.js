@@ -100,7 +100,7 @@ function createBomb() {
   const bomb = document.createElement("div");
   bomb.classList.add("enemyBomb");
   const randomX = Math.floor(
-    Math.random() * document.getElementById("playerField").offsetWidth + 80
+    Math.random() * document.getElementById("playerField").clientWidth
   );
   bomb.style.left = `${randomX}px`;
   bomb.style.top = `0px`;

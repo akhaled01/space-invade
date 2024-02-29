@@ -40,7 +40,8 @@ nav {
   font-weight: 100;
 }
 
-#score, #lives {
+#score,
+#lives {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,7 +141,7 @@ nav {
 .bullet {
   will-change: transform; /* Indicates that the element's transform property is likely to change */
   transform: translateY(0); /* Initialize transform property */
-  transition: transform 6s cubic-bezier(0.075, 0.82, 0.165, 1); /* Smooth transition for bullet movement */
+  transition: transform 1s linear; /* Smooth transition for bullet movement */
   width: 5px;
   height: 10px;
   border-radius: 1000px;
@@ -162,7 +163,8 @@ nav {
 }
 
 #continueBtn,
-#restartBtn, #restartBtn2 {
+#restartBtn,
+#restartBtn2 {
   all: unset;
   cursor: pointer;
   color: var(--avg-text-color);
