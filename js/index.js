@@ -99,9 +99,12 @@ function createBullet() {
 function createBomb() {
   const bomb = document.createElement("div");
   bomb.classList.add("enemyBomb");
-  const randomX = Math.floor(
-    Math.random() * document.getElementById("playerField").clientWidth
-  );
+  const randomX = Math.min(
+    Math.floor(
+      Math.random() * document.getElementById("playerField").clientWidth
+    ),
+    document.getElementById("playerField").clientWidth + 10
+  )
   bomb.style.left = `${randomX}px`;
   bomb.style.top = `0px`;
   document.body.appendChild(bomb);
@@ -243,9 +246,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // console.log(elapsedTime);
         const minutes = Math.floor(elapsedTime / 60);
         const seconds = elapsedTime % 60;
-        document.getElementById("timeValue").innerText = `${
-          minutes < 10 ? "0" : ""
-        }${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+        document.getElementById("timeValue").innerText = `${minutes < 10 ? "0" : ""
+          }${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
         // Update score
         document.getElementById("score").innerText = `Score: ${score}xp`;
       }

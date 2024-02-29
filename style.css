@@ -153,7 +153,7 @@ nav {
 .enemyBomb {
   will-change: transform;
   transform: translateY(0);
-  transition: transform 3s cubic-bezier(0.075, 0.82, 0.165, 1); /* Smooth transition for bullet movement */
+  transition: transform 1.5s linear; /* Smooth transition for bullet movement */
   width: 40px;
   height: 40px;
   border-radius: 10000px;
