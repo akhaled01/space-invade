@@ -215,8 +215,13 @@ function renderEnemies() {
   enemyField.innerHTML = ""; // Clear existing enemies
 
   // Number of enemies to generate
-  if (counter > 0) {
-    numEnemies = numEnemies+5; // Adjust as needed
+  console.log(counter);
+  if (counter > 0 && counter < 4) {
+    numEnemies += 5;
+  } else if (counter > 3) {
+    GameOver()
+    document.getElementById("gameOverOverlay").innerText = "Winna Winna Chicken Dina"
+    // alert("winaaaaaaaaaaaaaaa")
   }
 
   // Generate enemies
@@ -250,9 +255,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // console.log(elapsedTime);
         const minutes = Math.floor(elapsedTime / 60);
         const seconds = elapsedTime % 60;
-        document.getElementById("timeValue").innerText = `${
-          minutes < 10 ? "0" : ""
-        }${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+        document.getElementById("timeValue").innerText = `${minutes < 10 ? "0" : ""
+          }${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
         // Update score
         document.getElementById("score").innerText = `Score: ${score}xp`;
       }
@@ -262,6 +266,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 1000);
 
   document.addEventListener("keydown", function (e) {
+    if (isPaused) {
+      return
+    }
     if (e.key === "a") {
       isMovingLeft = true;
     } else if (e.key === "d") {
@@ -274,6 +281,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("keyup", function (e) {
+    if (isPaused) {
+      return
+    }
     if (e.key === "a") {
       isMovingLeft = false;
     } else if (e.key === "d") {
